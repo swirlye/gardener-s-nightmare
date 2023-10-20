@@ -5,9 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/P6MultiplayerSetup/DemoScene/MultiplayerDemo.unity
-    guid: 80934758c9f0c8042952a712efd81b33
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 315c2e6e7a180c54ea4caab5e85c6b1d,
       type: 2}
