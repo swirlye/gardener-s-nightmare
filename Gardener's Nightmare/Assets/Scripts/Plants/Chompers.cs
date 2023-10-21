@@ -20,7 +20,6 @@ public class Chompers : MonoBehaviour
 
     private void Start()
     {
-        _Animator = GetComponent<Animator>();
         TaskManager.Instance.OnSelectNewSong.AddListener(NewSongPlayed);
     }
 
@@ -46,7 +45,7 @@ public class Chompers : MonoBehaviour
 
     public void PlayerStopInRange()
     {
-        //_Animator.SetBool("Attack", false);
+        _Animator.SetBool("Attack", false);
         OnAttackEnd.Invoke();
         _inRange = false;
     }
@@ -61,6 +60,7 @@ public class Chompers : MonoBehaviour
         {
             AttackOnce();
             await Task.Delay(_AttackPauseTime);
+            _Animator.SetBool("Attack", false);
             //yield return new WaitForSeconds(_AttackPauseTime);
             await Task.Yield();
         }
@@ -71,7 +71,7 @@ public class Chompers : MonoBehaviour
         if (!ChomperAngry)
             return;
 
-        //_Animator.SetBool("Attack", true);
+        _Animator.SetBool("Attack", true);
         SoundManager.Instance.PlaySound(_AttackSound, _AttackSoundDelay);
     }
 
@@ -82,6 +82,8 @@ public class Chompers : MonoBehaviour
     public void FeedPlant()
     {
         ChomperFed = true;
+        ChomperAngry = false;
+
         OnFed.Invoke();
         TaskManager.Instance.FinishPlant(PlantType.Chompers);
         if(_FedSound !=null) SoundManager.Instance.PlaySound(_FedSound);
