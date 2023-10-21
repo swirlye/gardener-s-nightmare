@@ -84,8 +84,9 @@ public class Chompers : MonoBehaviour
         ChomperFed = true;
         OnFed.Invoke();
         TaskManager.Instance.FinishPlant(PlantType.Chompers);
+        if(_FedSound !=null) SoundManager.Instance.PlaySound(_FedSound);
 
-        if(Meat != null)Destroy(Meat);
+        if (Meat != null)Destroy(Meat);
 
 
     }
