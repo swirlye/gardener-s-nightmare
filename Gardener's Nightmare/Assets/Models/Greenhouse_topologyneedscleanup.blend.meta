@@ -7,8 +7,23 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Floor
+    second: {fileID: 2100000, guid: 12d8563c473604a8fac0bfcd21f7aace, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Material
-    second: {fileID: 2100000, guid: 2b30e80c313c9f347abb44b7275fad21, type: 2}
+    second: {fileID: 2100000, guid: a8b1f8748763b46abac03d7b5ffd718f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Walls
+    second: {fileID: 2100000, guid: 5bf602decd0c54498bdd00b4486a4e29, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: glass
+    second: {fileID: 2100000, guid: 9fb1fc8870afd407db1e337847c9992e, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
