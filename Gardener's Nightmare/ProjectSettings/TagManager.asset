@@ -8,6 +8,7 @@ TagManager:
   - LeftHand
   - RightHand
   - Finger
+  - Thorn
   layers:
   - Default
   - TransparentFX
@@ -18,11 +19,11 @@ TagManager:
   - IgnoreHands
   - Hands
   - CollideWithHandsOnly
-  - 
-  - 
+  - PlayerOnlyCollide
+  - IgnoreNothing
   - 
   - Teleport
-  - 
+  - Player
   - 
   - 
   - 
