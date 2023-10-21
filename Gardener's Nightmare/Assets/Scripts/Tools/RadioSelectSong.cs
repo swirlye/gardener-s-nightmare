@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class RadioSelectSong : MonoBehaviour
 {
+    public int SongNumber = 0;
     [SerializeField] private AudioClip _SongToPlay;
     [SerializeField] private RadioSelectSong[] _OtherButtons;
 
@@ -30,7 +31,6 @@ public class RadioSelectSong : MonoBehaviour
                 if(button._IsActive)
                     button.Deselect();
             }         
-            Debug.Log("Collided");
         }
     }
 
@@ -42,7 +42,8 @@ public class RadioSelectSong : MonoBehaviour
 
     private void Select()
     {
-        transform.localPosition = new Vector3(_startVector.x, 0.099f, _startVector.z);
+        transform.localPosition = new Vector3(_startVector.x, -0.255f, _startVector.z);
         _IsActive = true;
+        TaskManager.Instance.SelectSong(SongNumber);
     }
 }

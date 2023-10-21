@@ -6,6 +6,7 @@ using UnityEngine.Events;
 
 public class Chompers : MonoBehaviour
 {
+    public int LikesThisSongNumber = 0;
     [SerializeField] private Animator _Animator;
     [SerializeField] private int _AttackPauseTime;
 
@@ -14,10 +15,20 @@ public class Chompers : MonoBehaviour
     [SerializeField] private AudioClip _FedSound;
 
     public bool ChomperFed = false;
+    public bool ChomperAngry = true;
 
     private void Start()
     {
         _Animator = GetComponent<Animator>();
+        TaskManager.Instance.OnSelectNewSong.AddListener(NewSongPlayed);
+    }
+
+    private void NewSongPlayed(int songNumber)
+    {
+        if(songNumber == LikesThisSongNumber)
+            ChomperAngry = false;
+        else
+            ChomperAngry = true;
     }
 
     #region Attack
@@ -25,6 +36,8 @@ public class Chompers : MonoBehaviour
     private bool _inRange = false;
     public async void PlayerStartInRange()
     {
+        if (!ChomperAngry)
+            return;
         _inRange = true;
         OnAttackStart.Invoke();
         await AttackContinuously();
@@ -39,6 +52,9 @@ public class Chompers : MonoBehaviour
 
     private async Task AttackContinuously()
     {
+        if (!ChomperAngry)
+            return;
+
         _inRange = true;
         while (_inRange)
         {
@@ -51,8 +67,11 @@ public class Chompers : MonoBehaviour
 
     private void AttackOnce()
     {
+        if (!ChomperAngry)
+            return;
+
         //_Animator.SetBool("Attack", true);
-        //SoundManager.PlaySoundDelayed(_AttackSound, _AttackSoundDelay);
+        SoundManager.Instance.PlaySound(_AttackSound, _AttackSoundDelay);
     }
 
     #endregion
@@ -69,7 +88,7 @@ public class Chompers : MonoBehaviour
 
     private void FeedRections()
     {
-        //SoundManager.PlaySound(_FedSound);
+        SoundManager.Instance.PlaySound(_FedSound);
         //_Animator.SetBool("Fed", true);
     }
 

@@ -8,12 +8,11 @@ public class Cactus : MonoBehaviour
 {
     [SerializeField] private Animator _Animator;
     [SerializeField] private int _AttackPauseTime;
-    [SerializeField] private GameObject _ThornToShoot;
+    [SerializeField] private int _ShootSoundDelay;
+
     [SerializeField] private float _ThornSpeed;
     [SerializeField] private Transform _ThornSpawnPosition;
-
     [SerializeField] private AudioClip _AttackSound;
-    [SerializeField] private float _AttackSoundDelay;
     [SerializeField] private AudioClip _FedSound;
 
     public bool ChomperFed = false;
@@ -29,7 +28,7 @@ public class Cactus : MonoBehaviour
 
     private ThornPool _thornPool;
     private bool _inRange = false;
-
+    private GameObject _ThornToShoot;
     private GameObject _player;
 
     public async void PlayerStartInRange()
@@ -52,9 +51,10 @@ public class Cactus : MonoBehaviour
         
         while (_inRange)
         {
+            SoundManager.Instance.PlaySound(_AttackSound);
+            await Task.Delay(_ShootSoundDelay);
             AttackOnce();
             await Task.Delay(_AttackPauseTime);
-            //yield return new WaitForSeconds(_AttackPauseTime);
             await Task.Yield();
         }
     }
@@ -74,7 +74,7 @@ public class Cactus : MonoBehaviour
         physicsThorn.AddRelativeForce(new Vector3(0, 0, _ThornSpeed), ForceMode.Impulse);
 
         //_Animator.SetBool("Attack", true);
-        //SoundManager.PlaySoundDelayed(_AttackSound, _AttackSoundDelay);
+        
     }
 
     #endregion
@@ -91,7 +91,7 @@ public class Cactus : MonoBehaviour
 
     private void FeedRections()
     {
-        //SoundManager.PlaySound(_FedSound);
+        SoundManager.Instance.PlaySound(_FedSound);
         //_Animator.SetBool("Fed", true);
     }
 

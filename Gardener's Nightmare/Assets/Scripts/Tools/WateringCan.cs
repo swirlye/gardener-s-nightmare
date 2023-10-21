@@ -14,14 +14,7 @@ public class WateringCan : MonoBehaviour
     [SerializeField] private Transform _Nozzle;     // nozzle where the water pours out for forward transform calculation
     [SerializeField] private Transform _TransformReference;     // An empty transform that we can make follow then nozzle for horizontal reference
 
-    private bool _waterFull = false; // if we filled the can with water
     private bool _checkTilt = false;    // if we should check (only while holding)
-
-    public async void FillWaterCan()
-    {
-        _waterFull = true;
-        await TiltChecking();
-    }
 
     // The following 2 functions should be called in the XR Grab interactable on grab and release
     public async void StartCheckTilt()
@@ -35,7 +28,7 @@ public class WateringCan : MonoBehaviour
     // Caluclates the angle tilt downward to turn on pouring water or not.
     private async Task TiltChecking()
     {
-        while (_waterFull && _checkTilt)
+        while (_checkTilt)
         {
             // moves the reference world forward to point in the nozzle direction while staying horizontal
             _TransformReference.position = transform.position;
@@ -59,6 +52,6 @@ public class WateringCan : MonoBehaviour
 
     private void OnDisable()
     {
-        _waterFull = false;
+        _checkTilt = false;
     }
 }
