@@ -21,10 +21,10 @@ TagManager:
   - CollideWithHandsOnly
   - PlayerOnlyCollide
   - IgnoreNothing
-  - 
+  - CollideWithMeat
   - Teleport
   - Player
-  - 
+  - Meat
   - 
   - 
   - 

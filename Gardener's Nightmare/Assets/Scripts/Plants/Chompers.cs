@@ -13,6 +13,7 @@ public class Chompers : MonoBehaviour
     [SerializeField] private AudioClip _AttackSound;
     [SerializeField] private float _AttackSoundDelay;
     [SerializeField] private AudioClip _FedSound;
+    [SerializeField] private GameObject Meat;
 
     public bool ChomperFed = false;
     public bool ChomperAngry = true;
@@ -83,7 +84,10 @@ public class Chompers : MonoBehaviour
         ChomperFed = true;
         OnFed.Invoke();
         TaskManager.Instance.FinishPlant(PlantType.Chompers);
-        
+
+        if(Meat != null)Destroy(Meat);
+
+
     }
 
     private void FeedRections()
