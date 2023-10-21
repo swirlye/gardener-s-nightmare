@@ -65,6 +65,13 @@
     <Compile Include="Assets\Scripts\Tools\MoveScissorHand.cs" />
     <Compile Include="Assets\Scripts\Sound\SoundManager.cs" />
     <Compile Include="Assets\Scripts\Tools\RadioSelectSong.cs" />
+    <Compile Include="Assets\Scripts\Plants\Chompers.cs" />
+    <Compile Include="Assets\Scripts\Tasks\TaskManager.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerTrigger.cs" />
+    <Compile Include="Assets\Scripts\Plants\Cactus.cs" />
+    <Compile Include="Assets\Scripts\Plants\ThornDestroyer.cs" />
+    <Compile Include="Assets\Scripts\Plants\ThornPool.cs" />
+    <Compile Include="Assets\Scripts\Tasks\PlayerHealth.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
