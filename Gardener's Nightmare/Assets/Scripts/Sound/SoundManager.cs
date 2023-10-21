@@ -9,6 +9,8 @@ public class SoundManager : MonoBehaviour
 
     [SerializeField] private int _StartLineDelay = 3;
     [SerializeField] private AudioClip _StartVoiceLine;
+
+    [SerializeField] private AudioSource _AmbientAudioSource;
     
 
     private AudioSource _audioSource;
@@ -35,6 +37,13 @@ public class SoundManager : MonoBehaviour
     {
         int randomIndex = Random.Range(0, sounds.Length-1);
         _audioSource.PlayOneShot(sounds[randomIndex]);
+    }
+
+    public void PlayAmbientSong(AudioClip sound)
+    {
+        _AmbientAudioSource.clip = sound;
+        if (!_AmbientAudioSource.isPlaying)
+            _AmbientAudioSource.Play();
     }
 
     private AudioClip _savedSound;

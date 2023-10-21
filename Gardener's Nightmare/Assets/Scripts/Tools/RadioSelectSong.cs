@@ -23,7 +23,7 @@ public class RadioSelectSong : MonoBehaviour
             if (_IsActive)
                 return;
 
-            //SoundManager.PlayAmbientSong(_SongToPlay); //check if it's already playing in soundmanager
+            SoundManager.Instance.PlayAmbientSong(_SongToPlay);
             Select();
 
             foreach (var button in _OtherButtons)
