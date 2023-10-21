@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Hand
+  - LeftHand
+  - RightHand
+  - Finger
   layers:
   - Default
   - TransparentFX
@@ -14,7 +17,7 @@ TagManager:
   - UI
   - IgnoreHands
   - Hands
-  - 
+  - CollideWithHandsOnly
   - 
   - 
   - 
