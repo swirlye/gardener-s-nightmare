@@ -28,10 +28,10 @@ public class TaskManager : MonoBehaviour
 
     private int _plantsDone = 0;
 
-    [SerializeField] Image _ChomperCheckmark;
-    [SerializeField] Image _OrchidCheckmark;
-    [SerializeField] Image _CactusCheckmark;
-    [SerializeField] Image _EliCheckmark;
+    [SerializeField] GameObject _ChomperCheckmark;
+    [SerializeField] GameObject _OrchidCheckmark;
+    [SerializeField] GameObject _CactusCheckmark;
+    [SerializeField] GameObject _EliCheckmark;
 
     public void FinishPlant(PlantType plantType)
     {
@@ -39,16 +39,16 @@ public class TaskManager : MonoBehaviour
         switch (plantType)
         {
             case PlantType.Chompers:
-                _ChomperCheckmark.color = Color.green;
+                _ChomperCheckmark.SetActive(true);
                 break;
             case PlantType.Orchid:
-                _OrchidCheckmark.color = Color.green;
+                _OrchidCheckmark.SetActive(true);
                 break;
             case PlantType.Cactus:
-                _CactusCheckmark.color = Color.green;
+                _CactusCheckmark.SetActive(true);
                 break;
             case PlantType.Ivy:
-                _EliCheckmark.color = Color.green;
+                _EliCheckmark.SetActive(true);
                 break;
         }
 
